@@ -1,6 +1,15 @@
-@MQProject_HostAddress = http://localhost:5262
+@baseUrl = http://localhost:5262
 
-GET {{MQProject_HostAddress}}/weatherforecast/
+### Get all products
+GET {{baseUrl}}/shop/products
 Accept: application/json
 
-###
+### Create an order
+POST {{baseUrl}}/shop/order
+Content-Type: application/json
+
+{
+    "productId": 1,
+    "quantity": 2,
+    "userEmail": "test@example.com"
+}

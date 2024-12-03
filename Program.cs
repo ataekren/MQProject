@@ -7,6 +7,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Register services
+builder.Services.AddSingleton<ProductService>();
+builder.Services.AddSingleton<IRabbitMQService, RabbitMQService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
