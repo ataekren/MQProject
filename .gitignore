@@ -1,5 +1,5 @@
 .vs/
-obj/
+**/obj/
 bin/
 .idea/
 
