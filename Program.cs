@@ -11,6 +11,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<ProductService>();
 builder.Services.AddSingleton<IRabbitMQService, RabbitMQService>();
 
+builder.Services.AddHostedService<TestConsumer>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
