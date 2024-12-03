@@ -26,6 +26,11 @@ public class ShopController : ControllerBase
         if (product == null)
             return NotFound("Product not found");
 
+        if (request.Quantity <= 0)
+        {
+            return BadRequest("Quantity must be greater than 0");
+        }
+
         if (!_productService.UpdateStock(request.ProductId, request.Quantity))
             return BadRequest("Insufficient stock");
 
