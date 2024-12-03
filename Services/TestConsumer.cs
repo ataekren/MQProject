@@ -1,6 +1,7 @@
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
+using System.Text.Json;
 
 public class TestConsumer : BackgroundService
 {
@@ -17,7 +18,18 @@ public class TestConsumer : BackgroundService
         {
             var body = ea.Body.ToArray();
             var message = Encoding.UTF8.GetString(body);
-            Console.WriteLine($"Received order: {message}");
+            var order = JsonSerializer.Deserialize<Order>(message);
+
+            Console.WriteLine($"Processing order {order.Id}:");
+            Console.WriteLine($"- Simulating payment processing for ${order.TotalPrice}");
+            Thread.Sleep(1000);
+            Console.WriteLine($"- Payment processed successfully");
+
+            Console.WriteLine($"- Sending confirmation email to {order.UserEmail}");
+            Thread.Sleep(500);
+            Console.WriteLine($"- Email sent successfully");
+            
+            Console.WriteLine("Order processing completed\n");
         };
 
         channel.BasicConsume(queue: "order_processing",
