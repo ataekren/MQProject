@@ -31,7 +31,7 @@ public class ShopController : ControllerBase
 
         var order = new Order
         {
-            Id = new Random().Next(1000, 9999), // Simple ID generation
+            Id = new Random().Next(1000, 9999),
             ProductId = request.ProductId,
             Quantity = request.Quantity,
             UserEmail = request.UserEmail,
@@ -39,7 +39,6 @@ public class ShopController : ControllerBase
             OrderDate = DateTime.UtcNow
         };
 
-        // Publish order to RabbitMQ
         _rabbitMQService.PublishMessage("order_processing", order);
 
         return Ok(new { Message = "Order created successfully", OrderId = order.Id });
