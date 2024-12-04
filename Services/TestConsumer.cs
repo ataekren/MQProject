@@ -26,10 +26,12 @@ public class TestConsumer : BackgroundService
             Console.WriteLine($"- Payment processed successfully");
 
             Console.WriteLine($"- Sending confirmation email to {order.UserEmail}");
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
             Console.WriteLine($"- Email sent successfully");
             
             Console.WriteLine("Order processing completed\n");
+            Thread.Sleep(100);
+
         };
 
         channel.BasicConsume(queue: "order_processing",

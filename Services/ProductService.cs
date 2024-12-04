@@ -6,9 +6,9 @@ public class ProductService
     {
         _products = new List<Product>
         {
-            new Product { Id = 1, Name = "Laptop", Price = 999.99m, Stock = 10 },
-            new Product { Id = 2, Name = "Smartphone", Price = 499.99m, Stock = 20 },
-            new Product { Id = 3, Name = "Headphones", Price = 99.99m, Stock = 50 }
+            new Product { Id = 1, Name = "Laptop", Price = 999.99m, Stock = 100000 },
+            new Product { Id = 2, Name = "Smartphone", Price = 499.99m, Stock = 100000 },
+            new Product { Id = 3, Name = "Headphones", Price = 99.99m, Stock = 100000 }
         };
     }
 
